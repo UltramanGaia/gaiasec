@@ -18,13 +18,23 @@ version = properties("pluginVersion").get()
 
 // Configure project's dependencies
 repositories {
+    maven {
+        setUrl("https://maven.aliyun.com/repository/public/")
+    }
+    mavenLocal()
     mavenCentral()
+    maven {
+        setUrl("https://www.jetbrains.com/intellij-repository/releases/")
+    }
 }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
 //    implementation(libs.annotations)
+    implementation("cn.ultramangaia:gaiasec-sarif:2.1.0")
+    implementation("info.clearthought:table-layout:4.3.0")
 }
+
 
 // Set the JVM language level used to build the project.
 kotlin {

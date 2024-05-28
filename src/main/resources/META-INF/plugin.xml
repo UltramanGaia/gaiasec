@@ -1,18 +1,24 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.ultramangaia.gaiasec</id>
-    <name>gaiasec</name>
-    <vendor>ultramangaia</vendor>
+    <name>GaiaSec</name>
+    <vendor email="3213359017@qq.com" url="https://ultramangaia.cn">UltramanGaia</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.ultramangaia.gaiasec.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow anchor="bottom" id="GaiaSec" secondary="false" icon="PluginIcons.PLUGIN_ICON" factoryClass="cn.ultramangaia.gaiasec.gui.toolwindow.SarifViewerToolWindowFactory"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.ultramangaia.gaiasec.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <actions>
+        <group id="GaiaSec.ToolBarActions.LEFT" text="Sarif Viewer Actions" popup="true">
+            <action id="GaiaSec.Action.OpenFile" class="cn.ultramangaia.gaiasec.actions.OpenFileAction" icon="AllIcons.Welcome.Open" text="Open Sarif File"/>
+            <action id="GaiaSec.Action.ExpendAll" class="cn.ultramangaia.gaiasec.actions.ExpandAllAction" icon="AllIcons.Actions.Expandall" text="Expand All"/>
+            <action id="GaiaSec.Action.CollapseAll" class="cn.ultramangaia.gaiasec.actions.CollapseAllAction" icon="AllIcons.Actions.Collapseall" text="Collaspse All"/>
+            <action id="GaiaSec.Action.GroupByLevelRuleLocation" class="cn.ultramangaia.gaiasec.actions.GroupByLevelRuleLocationAction" icon="AllIcons.Actions.GroupByModuleGroup" text="Group By Level Rule Location"/>
+            <action id="GaiaSec.Action.GroupByRuleLevelLocation" class="cn.ultramangaia.gaiasec.actions.GroupByRuleLevelLocationAction" icon="AllIcons.Actions.GroupByTestProduction" text="Group By Rule Level Location"/>
+            <action id="GaiaSec.Action.GroupByLevelRule" class="cn.ultramangaia.gaiasec.actions.GroupByLevelRuleAction" icon="AllIcons.Actions.GroupByMethod" text="Group By Level Rule"/>
+            <action id="GaiaSec.Action.GroupByRuleLevel" class="cn.ultramangaia.gaiasec.actions.GroupByRuleLevelAction" icon="AllIcons.Actions.GroupByClass" text="Group By Rule Level"/>
+        </group>
+    </actions>
 </idea-plugin>
